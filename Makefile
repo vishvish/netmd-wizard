@@ -148,8 +148,20 @@ run: build
 
 bundle: build
 	@echo "Creating macOS app bundle..."
-	@./create_mac_bundle.sh $(BUILD_DIR)
-	@echo "Bundle created in: $(BUILD_DIR)/"
+	@# Copy icon
+	@mkdir -p $(BUILD_DIR)/release/netmd_wizard.app/Contents/Resources
+	@cp res/minidisc.icns $(BUILD_DIR)/release/netmd_wizard.app/Contents/Resources/netmd_wizard.icns 2>/dev/null || true
+	@# Copy ffmpeg if available
+	@mkdir -p $(BUILD_DIR)/release/netmd_wizard.app/Contents/MacOS
+	@cp ffmpeg/mac/ffmpeg $(BUILD_DIR)/release/netmd_wizard.app/Contents/MacOS/ 2>/dev/null || true
+	@# Copy help files
+	@mkdir -p $(BUILD_DIR)/release/netmd_wizard.app/Contents/Resources/help
+	@cp help/*.html help/*.png $(BUILD_DIR)/release/netmd_wizard.app/Contents/Resources/help/ 2>/dev/null || true
+	@# Run macdeployqt to bundle Qt frameworks
+	$(shell brew --prefix qt@5)/bin/macdeployqt $(BUILD_DIR)/release/netmd_wizard.app
+	@# Re-sign the app (macdeployqt breaks the signature)
+	@codesign --force --deep --sign - $(BUILD_DIR)/release/netmd_wizard.app
+	@echo "Bundle created: $(BUILD_DIR)/release/netmd_wizard.app"
 
 #
 # Development helpers
