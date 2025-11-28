@@ -1,0 +1,13 @@
+prefix=/Users/vish/git/software/netmd-wizard/prebuilt/mac
+exec_prefix=${prefix}
+libdir=/Users/vish/git/software/netmd-wizard/prebuilt/mac/lib
+includedir=/Users/vish/git/software/netmd-wizard/prebuilt/mac/include
+
+Name: sndfile
+Description: A library for reading and writing audio files
+Requires:
+Requires.private:  libmpg123
+Version: 1.2.2
+Libs: -L${libdir} -lsndfile
+Libs.private: -lmp3lame
+Cflags: -I${includedir}

@@ -2,22 +2,32 @@
 
 usage()
 {
-	echo "usage: $0 [OPTIONS]"
+  echo "usage: $0 [OPTIONS]"
 cat << EOH
 
 options:
-	[--libs]
-	[--cflags]
-	[--version]
-	[--prefix]
+  [--libs]
+  [--cflags]
+  [--version]
+  [--prefix]
 EOH
-	exit 1;
+  exit 1
 }
 
-prefix=/Users/joergn/src/cd2netmd_gui/prebuilt/mac
-exec_prefix=/Users/joergn/src/cd2netmd_gui/prebuilt/mac
-libdir=/Users/joergn/src/cd2netmd_gui/prebuilt/mac/lib
-includedir=/Users/joergn/src/cd2netmd_gui/prebuilt/mac/include
+# Looks useless as it is, but could be replaced with a "pcfiledir" by Buildroot.
+prefix=
+exec_prefix=
+
+if test -z "$prefix"; then
+  includedir=/Users/vish/git/software/netmd-wizard/prebuilt/mac_new/include
+else
+  includedir=${prefix}/include
+fi
+if test -z "$exec_prefix"; then
+  libdir=/Users/vish/git/software/netmd-wizard/prebuilt/mac_new/lib
+else
+  libdir=${exec_prefix}/lib
+fi
 
 flags=""
 
@@ -29,22 +39,22 @@ while test $# -gt 0
 do
   case $1 in
     --libs)
-	  flags="$flags -L$libdir -ltag -lz"
-	  ;;
+      flags="$flags -L$libdir -ltag -lz"
+      ;;
     --cflags)
-	  flags="$flags -I$includedir -I$includedir/taglib"
-	  ;;
+      flags="$flags -I$includedir -I$includedir/taglib"
+      ;;
     --version)
-	  echo 1.12
-	  ;;
+      echo 2.0.2
+      ;;
     --prefix)
-	  echo $prefix
-	  ;;
-	*)
-	  echo "$0: unknown option $1"
-	  echo
-	  usage
-	  ;;
+      echo ${prefix:-/Users/vish/git/software/netmd-wizard/prebuilt/mac_new}
+      ;;
+    *)
+      echo "$0: unknown option $1"
+      echo
+      usage
+      ;;
   esac
   shift
 done

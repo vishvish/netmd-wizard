@@ -117,7 +117,7 @@
 #define CDIO_HAVE_JOLIET 1
 
 /* Define this if your libcurses has keypad */
-#define CDIO_HAVE_KEYPAD 1
+/* #undef HAVE_KEYPAD */
 
 /* Define if you have <langinfo.h> and nl_langinfo(CODESET). */
 #define CDIO_HAVE_LANGINFO_CODESET 1
@@ -165,7 +165,7 @@
 #define CDIO_HAVE_MKSTEMP 1
 
 /* Define to 1 if you have the <ncurses.h> header file. */
-#define CDIO_HAVE_NCURSES_H 1
+/* #undef HAVE_NCURSES_H */
 
 /* Define to 1 if you have the <ncurses/ncurses.h> header file. */
 /* #undef HAVE_NCURSES_NCURSES_H */
@@ -320,9 +320,6 @@
    script can define this before including any of libcdio's headers. */
 #define CDIO_LIBCDIO_CONFIG_H 1
 
-/* Full path to libcdio top_sourcedir. */
-#define CDIO_LIBCDIO_SOURCE_PATH "/Users/joergn/src/libcdio"
-
 /* Define to the sub-directory where libtool stores uninstalled libraries. */
 #define CDIO_LT_OBJDIR ".libs/"
 
@@ -346,7 +343,7 @@
 #define CDIO_PACKAGE_NAME "libcdio"
 
 /* Define to the full name and version of this package. */
-#define CDIO_PACKAGE_STRING "libcdio 2.1.0"
+#define CDIO_PACKAGE_STRING "libcdio 2.2.0"
 
 /* Define to the one symbol short name of this package. */
 #define CDIO_PACKAGE_TARNAME "libcdio"
@@ -355,7 +352,7 @@
 #define CDIO_PACKAGE_URL ""
 
 /* Define to the version of this package. */
-#define CDIO_PACKAGE_VERSION "2.1.0"
+#define CDIO_PACKAGE_VERSION "2.2.0"
 
 /* Define to 1 if all of the C90 standard headers exist (not just the ones
    required in a freestanding environment). This macro is provided for
@@ -366,7 +363,7 @@
 /* #undef TM_IN_SYS_TIME */
 
 /* Version number of package */
-#define CDIO_VERSION "2.1.0"
+#define CDIO_VERSION "2.2.0"
 
 /* Define WORDS_BIGENDIAN to 1 if your processor stores words with the most
    significant byte first (like Motorola and SPARC, unlike Intel). */

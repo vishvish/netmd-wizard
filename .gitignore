@@ -23,6 +23,7 @@ tags
 .directory
 *.debug
 Makefile*
+!Makefile
 *.prl
 *.app
 moc_*.cpp
@@ -69,3 +70,7 @@ install/*
 release/*
 debug/*
 packages/*
+
+# Build directories
+build/
+build_deps/

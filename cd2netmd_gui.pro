@@ -33,6 +33,12 @@ mac{
     PKGCONFIG += libcdio libcdio_cdda libcdio_paranoia libiso9660 libudf taglib libnetmd++
     INCLUDEPATH += /usr/local/include
     LIBS += -L/usr/local/lib
+    
+    # Add Homebrew paths for Apple Silicon
+    exists(/opt/homebrew/lib) {
+        LIBS += -L/opt/homebrew/lib
+        INCLUDEPATH += /opt/homebrew/include
+    }
 
     # since libcdio doesn't support CD-Text on Mac, use drutil
     QT += xml

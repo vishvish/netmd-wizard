@@ -1,5 +1,5 @@
-prefix=/Users/joergn/src/cd2netmd_gui/prebuilt/mac
-exec_prefix=/Users/joergn/src/cd2netmd_gui/prebuilt/mac
+prefix=/Users/vish/git/software/netmd-wizard/prebuilt/mac
+exec_prefix=/Users/vish/git/software/netmd-wizard/prebuilt/mac
 libdir=${exec_prefix}/lib
 includedir=${prefix}/include
 
